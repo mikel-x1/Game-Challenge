@@ -9,7 +9,7 @@ from cell import Cell
 
 class GameWindow(Form):
     def __init__(self, rows, columns):
-        self.Text = 'Tic-tac-toe'
+        self.Text = 'Tic-tac-toe pour Seb'
         self.FormBorderStyle = FormBorderStyle.Fixed3D
         self.CenterToScreen
         self._indent_top = 50
@@ -40,6 +40,7 @@ class GameWindow(Form):
         file_item.DropDownItems.Add(new_game)
 
         self._exit = ToolStripMenuItem("Exit")
+        self._exit.Click += self._exit_game
         file_item.DropDownItems.Add(self._exit)
 
     def _create_buttons(self):
@@ -58,6 +59,9 @@ class GameWindow(Form):
         width = self._indent_left + columns * self._cell_side + self._indent_right + 10
         height = self._indent_top + rows * self._cell_side + self._indent_buttom + 33
         return Size(width, height)
+
+    def _exit_game(self, sender, args):
+        self.Close()
 
 
 if __name__ == '__main__':

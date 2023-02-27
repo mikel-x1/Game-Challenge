@@ -17,3 +17,16 @@ class Cell(Button):
     @property
     def x(self):
         return self._x
+
+    def set_value(self, value):
+        self.Text = value
+
+    @property
+    def is_X(self, value):
+        if value == 1:
+            return True
+
+    @property
+    def is_O(self, value):
+        if value == 2:
+            return True
