@@ -3,7 +3,8 @@ import clr
 clr.AddReference('System.Windows.Forms')
 from System.Windows.Forms import Form, FormBorderStyle, MenuStrip, ToolStripControlHost, ToolStripMenuItem
 clr.AddReference('System.Drawing')
-from System.Drawing import Size
+from System.Drawing import Size, Point
+from cell import Cell
 
 
 class GameWindow(Form):
@@ -26,6 +27,7 @@ class GameWindow(Form):
 
     def _initialize_components(self):
         self._generate_menu_strip()
+        self._create_buttons()
 
     def _generate_menu_strip(self):
         menu_strip = MenuStrip()
@@ -39,6 +41,18 @@ class GameWindow(Form):
 
         self._exit = ToolStripMenuItem("Exit")
         file_item.DropDownItems.Add(self._exit)
+
+    def _create_buttons(self):
+        for y in range(self._rows):
+            row = []
+            for x in range(self._columns):
+                cell = Cell(y, x)
+                cell.Parent = self
+                cell.Size = self._cell_size
+                cell.Location = Point(self._indent_left + x * self._cell_side,
+                                      self._indent_top + y * self._cell_side)
+                row.append(cell)
+            self._cells.append(row)
 
     def _generate_window_size(self, rows, columns):
         width = self._indent_left + columns * self._cell_side + self._indent_right + 10
