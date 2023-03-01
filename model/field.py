@@ -23,6 +23,7 @@ class Field(object):
     def field(self):
         return self._field
 
+
 if __name__ == '__main__':
     f = Field()
     print f.field

@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import clr
 clr.AddReference('System.Windows.Forms')
-from System.Windows.Forms import (
-    Form, FormBorderStyle, MenuStrip, ToolStripControlHost,
-    ToolStripMenuItem
-)
+from System.Windows.Forms import Form, FormBorderStyle, MenuStrip, ToolStripMenuItem
 clr.AddReference('System.Drawing')
 from System.Drawing import Size, Point
 from cell import Cell
