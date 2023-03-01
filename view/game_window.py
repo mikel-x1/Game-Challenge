@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import clr
 clr.AddReference('System.Windows.Forms')
-from System.Windows.Forms import Form, FormBorderStyle, MenuStrip, ToolStripControlHost, ToolStripMenuItem
+from System.Windows.Forms import (
+    Form, FormBorderStyle, MenuStrip, ToolStripControlHost,
+    ToolStripMenuItem
+)
 clr.AddReference('System.Drawing')
 from System.Drawing import Size, Point
 from cell import Cell
@@ -9,11 +12,11 @@ from cell import Cell
 
 class GameWindow(Form):
     def __init__(self, rows, columns):
-        self.Text = 'Tic-tac-toe pour Seb'
+        self.Text = 'Tic-tac-toe'
         self.FormBorderStyle = FormBorderStyle.Fixed3D
         self.CenterToScreen
         self._indent_top = 50
-        self._indent_left = 10
+        self._indent_left = 20
         self._indent_right = 10
         self._indent_buttom = 10
         self._cell_side = 100

@@ -23,10 +23,10 @@ class Cell(Button):
 
     @property
     def is_X(self, value):
-        if value == 1:
+        if value == 'X':
             return True
 
     @property
     def is_O(self, value):
-        if value == 2:
+        if value == 'O':
             return True
