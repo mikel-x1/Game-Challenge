@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import clr
 clr.AddReference('System.Windows.Forms')
-from System.Windows.Forms import Form, FormBorderStyle, MenuStrip, ToolStripMenuItem
+from System.Windows.Forms import (
+    Form, FormBorderStyle, MenuStrip, Label,
+    ToolStripMenuItem, TextRenderer
+)
 clr.AddReference('System.Drawing')
 from System.Drawing import Size, Point
 from cell import Cell
@@ -29,6 +32,12 @@ class GameWindow(Form):
         self._generate_menu_strip()
         self._create_buttons()
 
+        self._result = Label()
+        self._result.Parent = self
+        self._result.Text = ''
+        self._result.Size = TextRenderer.MeasureText(self._result.Text, self._result.DefaultFont)
+        self._result.Location = Point(self.Size.Width / 2 - self._result.Size.Width / 2 - 5, 30)
+
     def _generate_menu_strip(self):
         menu_strip = MenuStrip()
         menu_strip.Parent = self
@@ -55,10 +64,20 @@ class GameWindow(Form):
                 row.append(cell)
             self._cells.append(row)
 
+    def set_cell_click_handler(self, handler):
+        for row in self._cells:
+            for cell in row:
+                cell.MouseDown += handler
+
     def _generate_window_size(self, rows, columns):
         width = self._indent_left + columns * self._cell_side + self._indent_right + 10
         height = self._indent_top + rows * self._cell_side + self._indent_buttom + 33
         return Size(width, height)
+
+    def set_final_message(self, message):
+        self._result.Text = message
+        self._result.Size = TextRenderer.MeasureText(self._result.Text, self._result.DefaultFont)
+        self._result.Location = Point(self.Size.Width / 2 - self._result.Size.Width / 2 - 5, 30)
 
     def _exit_game(self, sender, args):
         self.Close()

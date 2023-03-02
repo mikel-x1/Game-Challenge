@@ -9,6 +9,7 @@ class Cell(Button):
     def __init__(self, y, x):
         self._y = y
         self._x = x
+        self._typed = False
 
     @property
     def y(self):
@@ -20,6 +21,10 @@ class Cell(Button):
 
     def set_value(self, value):
         self.Text = value
+
+    @property
+    def is_typed(self):
+        return self._typed
 
     @property
     def is_X(self, value):
