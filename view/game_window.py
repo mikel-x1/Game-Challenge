@@ -45,9 +45,6 @@ class GameWindow(Form):
         file_item = ToolStripMenuItem("File")
         menu_strip.Items.Add(file_item)
 
-        new_game = ToolStripMenuItem("New game")
-        file_item.DropDownItems.Add(new_game)
-
         self._exit = ToolStripMenuItem("Exit")
         self._exit.Click += self._exit_game
         file_item.DropDownItems.Add(self._exit)
