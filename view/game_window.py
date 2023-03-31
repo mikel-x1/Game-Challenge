@@ -57,6 +57,7 @@ class GameWindow(Form):
             row = []
             for x in range(self._columns):
                 cell = Cell(y, x)
+                cell.Text = ''
                 cell.Parent = self
                 cell.Size = self._cell_size
                 cell.Location = Point(self._indent_left + x * self._cell_side,

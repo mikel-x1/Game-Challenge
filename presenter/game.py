@@ -15,22 +15,12 @@ class Game(object):
         self._typed_cells = 0
 
     def _mouse_button_down(self, cell, args):
-        if not cell.is_typed:
+        if cell.Text == '':
             if args.Button == MouseButtons.Left:
                 self._left_click(cell)
 
     def _left_click(self, cell):
-        self._closed_cells += 1
-        value = self._field[cell.y][cell.x]
-        if value == 0:
-            value = self._give_value()
-            cell.set_value(value)
-
-    def _give_value(self):
-        if self._field.count('X') > self._field.count('O'):
-            return 'O'
-        else:
-            return 'X'
+        cell.set_value('X')
 
 
 if __name__ == '__main__':
