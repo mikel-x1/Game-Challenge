@@ -6,18 +6,10 @@ class Field(object):
         self._field = [[0 for j in range(self._columns)] for i in range(self._rows)]
 
     def set_X(self, x, y):
-        self._field[x][y] = 'X'
+        self._field[y][x] = 'X'
 
     def set_O(self, x, y):
-        self._field[x][y] = 'O'
-
-    @property
-    def rows(self):
-        return self._rows
-
-    @property
-    def columns(self):
-        return self._columns
+        self._field[y][x] = '0'
 
     @property
     def field(self):
